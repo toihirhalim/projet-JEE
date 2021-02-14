@@ -10,7 +10,8 @@ public class Clinique {
 	private String closeAt;
 	private String number;
 	private String email;
-	private String webSite;
+	
+	private WebSite webSite;
 	
 	private Adress adress;
 	
@@ -19,8 +20,7 @@ public class Clinique {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Clinique(String id, String name, String oppenAt, String closeAt, String number, String email,
-			String webSite) {
+	public Clinique(String id, String name, String oppenAt, String closeAt, String number, String email) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -28,7 +28,6 @@ public class Clinique {
 		this.closeAt = closeAt;
 		this.number = number;
 		this.email = email;
-		this.webSite = webSite;
 	}
 
 	public String getId() {
@@ -79,11 +78,11 @@ public class Clinique {
 		this.email = email;
 	}
 
-	public String getWebSite() {
+	public WebSite getWebSite() {
 		return webSite;
 	}
 
-	public void setWebSite(String webSite) {
+	public void setWebSite(WebSite webSite) {
 		this.webSite = webSite;
 	}
 

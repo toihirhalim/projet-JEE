@@ -12,6 +12,7 @@ import ma.fstt.entities.Adress;
 import ma.fstt.entities.Clinique;
 import ma.fstt.entities.Medcin;
 import ma.fstt.entities.Tags;
+import ma.fstt.entities.WebSite;
 import ma.fstt.services.GestionMedcinService;
 import ma.fstt.services.SearchMedcinService;
 import ma.fstt.services.TagsServices;
@@ -38,7 +39,31 @@ public class ServerApplication implements CommandLineRunner{
 		//initTags();
 		//affectTags();
 		//affiche();
+		//addWebSites();
 		//test();
+	}
+	public void addWebSites() {
+		List<Medcin> medcins = gestionMedcinService.getAll();
+		int seq = 20;
+		for(Medcin medcin : medcins) {
+			String name = "";
+			String url = "http://";
+			String cliniqueName = medcin.getClinique().getName();
+			for(int i = 0; i < cliniqueName.length(); i++) {
+				char ch = cliniqueName.charAt(i);
+				if(ch != ' ') {
+					name += ch;
+					url +=  ch;
+				}
+			}
+			name += ".com";
+			url += ".com";
+			
+			medcin.getClinique().setWebSite(new WebSite("" + seq++, name, url));
+		}
+		
+		gestionMedcinService.saveAll(medcins);
+		System.out.println("medcins saved");
 	}
 
 	public List<String> convertArrayToString(String [] strings){
@@ -77,7 +102,7 @@ public class ServerApplication implements CommandLineRunner{
 	
 	public void affectTags() {
 		for(Tags tags : tagsServices.findAll()) {
-			List<Medcin> medcins = searchMedcinService.findAllBySpecality(tags.getSpeciality());
+			List<Medcin> medcins = searchMedcinService.findAllBySpeciality(tags.getSpeciality());
 			
 			for(Medcin m : medcins)
 				m.setIdTags(tags.getId());
@@ -95,11 +120,11 @@ public class ServerApplication implements CommandLineRunner{
 		Medcin m4 = new Medcin("4", "Bouchra Ben", "Rabat", "Cardiologue");
 		Medcin m5 = new Medcin("5", "Yassyn Mubarak", "Tanger", "Chirurgien");
 
-		Clinique cl1 = new Clinique("6","Ali Clinique", "8h", "16h", null,null, null);
-		Clinique cl2 = new Clinique("7","Omar Clinique", "8h", "16h", null,null, null);
-		Clinique cl3 = new Clinique("8","Mehdi Clinique", "8h", "16h", null,null, null);
-		Clinique cl4 = new Clinique("9","Bouchra Clinique", "8h", "16h", null,null, null);
-		Clinique cl5 = new Clinique("10","Yassyn Clinique", "8h", "16h", null,null, null);
+		Clinique cl1 = new Clinique("6","Ali Clinique", "8h", "16h", null, null);
+		Clinique cl2 = new Clinique("7","Omar Clinique", "8h", "16h", null, null);
+		Clinique cl3 = new Clinique("8","Mehdi Clinique", "8h", "16h", null, null);
+		Clinique cl4 = new Clinique("9","Bouchra Clinique", "8h", "16h", null, null);
+		Clinique cl5 = new Clinique("10","Yassyn Clinique", "8h", "16h", null, null);
 
 		cl1.setAdress(new Adress("11", null, 0,0));
 		cl2.setAdress(new Adress("12", null, 0,0));
@@ -117,7 +142,7 @@ public class ServerApplication implements CommandLineRunner{
 		medcins.add(m2);
 		medcins.add(m3);
 		medcins.add(m4);
-		medcins.add(m4);
+		medcins.add(m5);
 		
 		gestionMedcinService.saveAll(medcins);
 		System.out.println("medcins saved");
@@ -136,7 +161,7 @@ public class ServerApplication implements CommandLineRunner{
 			System.out.println(medcin);
 		
 		System.out.println("all Chirurgien");
-		for(Medcin medcin : searchMedcinService.findAllBySpecality("Chirurgien"))
+		for(Medcin medcin : searchMedcinService.findAllBySpeciality("Chirurgien"))
 			System.out.println(medcin);
 		
 		System.out.println("all Ophtalmologue of tanger");

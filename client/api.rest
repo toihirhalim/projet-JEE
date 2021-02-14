@@ -1,0 +1,17 @@
+GET http://localhost:8080/search/ville/Tanger
+
+###
+GET http://localhost:8080/search/speciality/Ophtalmologue
+
+###
+GET http://localhost:8080/search/ville/Tanger/speciality/Ophtalmologue
+
+
+###
+POST http://localhost:8080/search/tags
+content-type: application/json
+
+{
+    "email": "hatimbakk25@gmail.com",
+    "password": "45123"
+}
