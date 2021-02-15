@@ -47,19 +47,24 @@ public class SearchMedcinService {
 		return tokens;
 	}
 	
-	public List<Medcin> findBySymptomes(String symptomes){
-		List<String> tokens = tokenize(symptomes);
+	public List<Medcin> findByDouleurs(String douleurs){
+		List<Medcin> medcins = new ArrayList();
+		List<String> tokens = tokenize(douleurs);
 		List<Tags> tags = tagsServices.findAll();
+		List<Tags> trueTags = new ArrayList();
 		
 		for(String token : tokens) {
 			for(Tags tag: tags) {
-				if(tag.getTags().contains(token)) {
-					return findAllBySpeciality(tag.getSpeciality());
+				if(tag.getTags().contains(token) && !trueTags.contains(tag)) {
+					trueTags.add(tag);
 				}
 			}
 		}
 		
-		return new ArrayList();
+		for(Tags t: trueTags)
+			medcins.addAll(findAllBySpeciality(t.getSpeciality()));
+		
+		return medcins;
 	}
 
 }

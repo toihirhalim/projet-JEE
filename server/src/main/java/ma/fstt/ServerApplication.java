@@ -2,24 +2,27 @@ package ma.fstt;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import ma.fstt.entities.Admin;
 import ma.fstt.entities.Adress;
 import ma.fstt.entities.Clinique;
 import ma.fstt.entities.Medcin;
 import ma.fstt.entities.Tags;
 import ma.fstt.entities.WebSite;
+import ma.fstt.services.GestionAdminService;
 import ma.fstt.services.GestionMedcinService;
 import ma.fstt.services.SearchMedcinService;
 import ma.fstt.services.TagsServices;
 
 @SpringBootApplication
 public class ServerApplication implements CommandLineRunner{
-	@Autowired
+	/*@Autowired
 	GestionMedcinService gestionMedcinService;
 	
 	@Autowired
@@ -28,6 +31,12 @@ public class ServerApplication implements CommandLineRunner{
 	@Autowired
 	TagsServices tagsServices;
 	
+	@Autowired 
+	GestionAdminService gestionAdminService;
+	
+	Random rd = new Random();*/
+	
+	
 	public static void main(String[] args) {
 		SpringApplication.run(ServerApplication.class, args);
 	}
@@ -35,35 +44,35 @@ public class ServerApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		//init();
+		//initMedcins();
 		//initTags();
 		//affectTags();
-		//affiche();
-		//addWebSites();
-		//test();
-	}
-	public void addWebSites() {
-		List<Medcin> medcins = gestionMedcinService.getAll();
-		int seq = 20;
-		for(Medcin medcin : medcins) {
-			String name = "";
-			String url = "http://";
-			String cliniqueName = medcin.getClinique().getName();
-			for(int i = 0; i < cliniqueName.length(); i++) {
-				char ch = cliniqueName.charAt(i);
-				if(ch != ' ') {
-					name += ch;
-					url +=  ch;
-				}
-			}
-			name += ".com";
-			url += ".com";
-			
-			medcin.getClinique().setWebSite(new WebSite("" + seq++, name, url));
-		}
 		
-		gestionMedcinService.saveAll(medcins);
-		System.out.println("medcins saved");
+		//createDefaultAdmin();
+
+		//affiche();
+	}
+	/*public void createDefaultAdmin() {
+		gestionAdminService.saveAdmin(new Admin("admin@gmail.com", "admin"));
+	}
+	public void addWebSitesAndEmail(Clinique clinique) {
+		
+		String name = "";
+		String url = "http://";
+		
+		for(int i = 0; i < clinique.getName().length(); i++) {
+			char ch = clinique.getName().charAt(i);
+			if(ch != ' ') {
+				name += ch;
+				url +=  ch;
+			}
+		}
+
+		clinique.setEmail(name +".contact.gmail.com");
+		name += ".com";
+		url += ".com";
+		clinique.setWebSite(new WebSite(name, url));
+
 	}
 
 	public List<String> convertArrayToString(String [] strings){
@@ -75,10 +84,10 @@ public class ServerApplication implements CommandLineRunner{
 		return list;
 	}
 	public void initTags() {
-		Tags t1 = new Tags("16", "Ophtalmologue");
-		Tags t2 = new Tags("17", "Dermatologue");
-		Tags t3 = new Tags("18", "Cardiologue");
-		Tags t4 = new Tags("19", "Chirurgien");
+		Tags t1 = new Tags("Ophtalmologue");
+		Tags t2 = new Tags("Dermatologue");
+		Tags t3 = new Tags("Cardiologue");
+		Tags t4 = new Tags("Chirurgien");
 
 		String [] ophta = {"yeux", "yeu", "oeuil", "vision", "lunette"};
 		String [] derma = {"peau", "button", "acne", "point", "points", "brulure", "brulures"};
@@ -111,26 +120,35 @@ public class ServerApplication implements CommandLineRunner{
 			System.out.println("medcins saved");
 		}
 	}
-	public void init() {
+	public String randomNumber() {
+		return "06" + rd.nextInt(99999999);
+	}
+	public void initMedcins() {
 		List<Medcin> medcins = new ArrayList();
 
-		Medcin m1 = new Medcin("1", "Ali Abdalah", "Tanger", "Ophtalmologue");
-		Medcin m2 = new Medcin("2", "Omar Moussa", "Tanger", "Dermatologue");
-		Medcin m3 = new Medcin("3", "Mehdi Fatima", "Rabat", "Ophtalmologue");
-		Medcin m4 = new Medcin("4", "Bouchra Ben", "Rabat", "Cardiologue");
-		Medcin m5 = new Medcin("5", "Yassyn Mubarak", "Tanger", "Chirurgien");
+		Medcin m1 = new Medcin("Ali Abdalah", "Tanger", "Ophtalmologue");
+		Medcin m2 = new Medcin("Omar Moussa", "Tanger", "Dermatologue");
+		Medcin m3 = new Medcin("Mehdi Fatima", "Rabat", "Ophtalmologue");
+		Medcin m4 = new Medcin("Bouchra Ben", "Rabat", "Cardiologue");
+		Medcin m5 = new Medcin("Yassyn Mubarak", "Tanger", "Chirurgien");
 
-		Clinique cl1 = new Clinique("6","Ali Clinique", "8h", "16h", null, null);
-		Clinique cl2 = new Clinique("7","Omar Clinique", "8h", "16h", null, null);
-		Clinique cl3 = new Clinique("8","Mehdi Clinique", "8h", "16h", null, null);
-		Clinique cl4 = new Clinique("9","Bouchra Clinique", "8h", "16h", null, null);
-		Clinique cl5 = new Clinique("10","Yassyn Clinique", "8h", "16h", null, null);
+		Clinique cl1 = new Clinique("Ali Clinique", "8h", "16h", randomNumber(), null);
+		Clinique cl2 = new Clinique("Omar Clinique", "8h", "16h",  randomNumber(), null);
+		Clinique cl3 = new Clinique("Mehdi Clinique", "8h", "16h",  randomNumber(), null);
+		Clinique cl4 = new Clinique("Bouchra Clinique", "8h", "16h", randomNumber(), null);
+		Clinique cl5 = new Clinique("Yassyn Clinique", "8h", "16h", randomNumber(), null);
 
-		cl1.setAdress(new Adress("11", null, 0,0));
-		cl2.setAdress(new Adress("12", null, 0,0));
-		cl3.setAdress(new Adress("13", null, 0,0));
-		cl4.setAdress(new Adress("14", null, 0,0));
-		cl5.setAdress(new Adress("15", null, 0,0));
+		cl1.setAdress(new Adress("Boukhalef", 0,0));
+		cl2.setAdress(new Adress("Dradeb", 0,0));
+		cl3.setAdress(new Adress("G5", 0,0));
+		cl4.setAdress(new Adress("Gare Agdal", 0,0));
+		cl5.setAdress(new Adress("Castilla", 0,0));
+
+		addWebSitesAndEmail(cl1);
+		addWebSitesAndEmail(cl2);
+		addWebSitesAndEmail(cl3);
+		addWebSitesAndEmail(cl4);
+		addWebSitesAndEmail(cl5);
 
 		m1.setClinique(cl1);
 		m2.setClinique(cl2);
@@ -153,9 +171,7 @@ public class ServerApplication implements CommandLineRunner{
 		System.out.println("all medcins");
 		for(Medcin medcin : gestionMedcinService.getAll())
 			System.out.println(medcin);
-	}
-	
-	public void test() {
+		
 		System.out.println("all medcins of Tanger");
 		for(Medcin medcin : searchMedcinService.findAllByVille("Tanger"))
 			System.out.println(medcin);
@@ -167,7 +183,6 @@ public class ServerApplication implements CommandLineRunner{
 		System.out.println("all Ophtalmologue of tanger");
 		for(Medcin medcin : searchMedcinService.findAllByVilleAndSpecality("Tanger", "Ophtalmologue"))
 			System.out.println(medcin);
-		
-	}
+	}*/
 
 }

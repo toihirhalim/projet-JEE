@@ -2,7 +2,6 @@ package ma.fstt.controllers;
 
 import java.util.List;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import ma.fstt.entities.Medcin;
 import ma.fstt.services.SearchMedcinService;
@@ -42,10 +40,10 @@ public class SearchMedcinController {
 		return searchMedcinService.findAllByVilleAndSpecality(ville, speciality);
 	}
 	
-	@PostMapping("/syptomes")
-	public List<Medcin>  getAllBySymptome(@RequestBody String symptomes){
+	@PostMapping("/douleurs")
+	public List<Medcin>  getAllByDouleurs(@RequestBody String douleurs){
 		
-		return searchMedcinService.findBySymptomes(symptomes);
+		return searchMedcinService.findByDouleurs(douleurs);
 	}
 	
 }

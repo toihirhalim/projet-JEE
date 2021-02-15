@@ -1,8 +1,12 @@
 package ma.fstt.entities;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 
 public class Adress {
+	@Transient
+    public static final String SEQUENCE_NAME = "adresses_sequence";
+	
 	@Id
 	private String id;
 	private String location;
@@ -12,6 +16,12 @@ public class Adress {
 	public Adress() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public Adress(String location, float longitude, float latitude) {
+		super();
+		this.location = location;
+		this.longitude = longitude;
+		this.latitude = latitude;
 	}
 	public Adress(String id, String location, float longitude, float latitude) {
 		super();

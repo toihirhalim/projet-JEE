@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Admin from './pages/Admin'
 import Acceuil from './pages/Acceuil'
+import InscriptionClinique from './pages/InscriptionClinique'
 import './App.css';
 
 function App() {
@@ -9,10 +10,10 @@ function App() {
       <header>
         <div className="container header-container">
           <div className="logo">
-            <a href="acceuil">logo</a>
+            <a href="acceuil">Acceuil</a>
           </div>
           <div>
-            <a href="#inscriptionform">
+            <a href="inscription">
               <button>Inscrire votre Clinique</button>
             </a>
           </div>
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route path="/acceuil">
             <Acceuil />
+          </Route>
+          <Route path="/inscription">
+            <InscriptionClinique />
           </Route>
           <Route path="">
             <Acceuil />

@@ -1,10 +1,14 @@
 package ma.fstt.entities;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Medcin {
+	@Transient
+    public static final String SEQUENCE_NAME = "medcins_sequence";
+	
 	@Id
 	private String id;
 	private String name;
@@ -24,6 +28,13 @@ public class Medcin {
 	public Medcin(String id, String name, String ville, String speciality) {
 		super();
 		this.id = id;
+		this.name = name;
+		this.ville = ville;
+		this.speciality = speciality;
+	}
+	
+	public Medcin(String name, String ville, String speciality) {
+		super();
 		this.name = name;
 		this.ville = ville;
 		this.speciality = speciality;

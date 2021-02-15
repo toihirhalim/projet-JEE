@@ -3,8 +3,12 @@ package ma.fstt.entities;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 
 public class Tags {
+	@Transient
+    public static final String SEQUENCE_NAME = "tags_sequence";
+	
 	@Id
 	private String id;
 	private String speciality;
@@ -18,6 +22,11 @@ public class Tags {
 	public Tags(String id, String speciality) {
 		super();
 		this.id = id;
+		this.speciality = speciality;
+	}
+	
+	public Tags(String speciality) {
+		super();
 		this.speciality = speciality;
 	}
 

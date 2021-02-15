@@ -1,8 +1,12 @@
 package ma.fstt.entities;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 
 public class WebSite {
+	@Transient
+    public static final String SEQUENCE_NAME = "websites_sequence";
+	
 	@Id
 	private String id;
 	private String name;
@@ -16,6 +20,12 @@ public class WebSite {
 	public WebSite(String id, String name, String url) {
 		super();
 		this.id = id;
+		this.name = name;
+		this.url = url;
+	}
+	
+	public WebSite(String name, String url) {
+		super();
 		this.name = name;
 		this.url = url;
 	}

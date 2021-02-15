@@ -1,8 +1,12 @@
 package ma.fstt.entities;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 
 public class Clinique {
+	@Transient
+    public static final String SEQUENCE_NAME = "cliniques_sequence";
+	
 	@Id
 	private String id;
 	private String name;
@@ -23,6 +27,15 @@ public class Clinique {
 	public Clinique(String id, String name, String oppenAt, String closeAt, String number, String email) {
 		super();
 		this.id = id;
+		this.name = name;
+		this.oppenAt = oppenAt;
+		this.closeAt = closeAt;
+		this.number = number;
+		this.email = email;
+	}
+	
+	public Clinique(String name, String oppenAt, String closeAt, String number, String email) {
+		super();
 		this.name = name;
 		this.oppenAt = oppenAt;
 		this.closeAt = closeAt;
