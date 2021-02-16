@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from "react-router-dom"
 
 export default function InscriptionClinique() {
     const [name, setName] = useState('')
@@ -14,10 +15,44 @@ export default function InscriptionClinique() {
     const [webSiteName, setWebSiteName] = useState('')
     const [webSiteUrl, setWebSiteUrl] = useState('')
 
+
+    let history = useHistory();
+
+    const [error, setError] = useState()
+
     const handleSubmit = e => {
         e.preventDefault()
+        setError(null)
+        fetch('http://localhost:8080/form/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name,
+                email,
+                publicEmail,
+                speciality,
+                ville,
+                cliniqueName,
+                number,
+                oppenAt,
+                closeAt,
+                adress,
+                webSiteName,
+                webSiteUrl
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data) {
+                    alert('demande effectué avec succes')
+                    history.push('/acceuil')
+                }
 
-        console.log('fetching ...')
+                setError('please verrify your informations')
+            })
+            .catch(e => setError('Error: something went wrong please verrify the connexion'))
     }
     return (
         <div>
@@ -72,7 +107,7 @@ export default function InscriptionClinique() {
                         />
                     </div>
                     <div className="form-elm-dmd">
-                        <h3>Enter your ful Name : </h3>
+                        <h3>Enter your clinique Name : </h3>
                         <input
                             type="texte"
                             className="form-input-dmd"
@@ -137,6 +172,13 @@ export default function InscriptionClinique() {
                     <div>
                         <button className="submit-frm-demd" type="submit">Submit Your Request</button>
                     </div>
+                    {
+                        error &&
+                        <div id="error-frm-dmd">
+                            <p>{error}</p>
+                        </div>
+                    }
+
                 </form>
             </div>
         </div>

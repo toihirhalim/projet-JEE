@@ -1,9 +1,8 @@
 import React from 'react'
-import useAdminToken from '../../auth/useAdminToken'
 
 
-export default function AdminComponent({ token, admin, reload, setReload, setError }) {
-    const { logout } = useAdminToken
+export default function AdminComponent({ token, admin, reload, setReload, setError, logout }) {
+
     const deleteAdmin = () => {
         let url = 'http://localhost:8080/admin/delete/' + admin.id
         fetch(url, {
@@ -16,8 +15,9 @@ export default function AdminComponent({ token, admin, reload, setReload, setErr
             .then(res => {
                 if (token.email === admin.email) {
                     logout()
+                } else {
+                    setReload(!reload)
                 }
-                setReload(!reload)
             })
             .catch(e => setError('Error : something went wrong please verrify your connexion !'))
     }

@@ -6,7 +6,7 @@ import '../App.css'
 export default function Acceuil() {
     const [medcins, setMedcins] = useState([])
     const [error, setError] = useState()
-    let [isLoading, setLoading] = useState(false);
+    let [isLoading, setLoading] = useState(false)
 
     return (
         <div>

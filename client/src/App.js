@@ -1,3 +1,4 @@
+import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Admin from './pages/Admin'
 import Acceuil from './pages/Acceuil'
@@ -5,6 +6,7 @@ import InscriptionClinique from './pages/InscriptionClinique'
 import './App.css';
 
 function App() {
+
   return (
     <div className="App">
       <header>
@@ -16,6 +18,7 @@ function App() {
             <a href="inscription">
               <button>Inscrire votre Clinique</button>
             </a>
+
           </div>
         </div>
       </header>

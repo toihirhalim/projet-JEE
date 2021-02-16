@@ -22,7 +22,7 @@ import ma.fstt.services.TagsServices;
 
 @SpringBootApplication
 public class ServerApplication implements CommandLineRunner{
-	/*@Autowired
+	@Autowired
 	GestionMedcinService gestionMedcinService;
 	
 	@Autowired
@@ -34,7 +34,7 @@ public class ServerApplication implements CommandLineRunner{
 	@Autowired 
 	GestionAdminService gestionAdminService;
 	
-	Random rd = new Random();*/
+	Random rd = new Random();
 	
 	
 	public static void main(String[] args) {
@@ -48,14 +48,18 @@ public class ServerApplication implements CommandLineRunner{
 		//initTags();
 		//affectTags();
 		
-		//createDefaultAdmin();
+		createDefaultAdmin();
 
 		//affiche();
 	}
-	/*public void createDefaultAdmin() {
-		gestionAdminService.saveAdmin(new Admin("admin@gmail.com", "admin"));
+	public void createDefaultAdmin() {
+		if(gestionAdminService.getAllAdmin().size() <= 0) {
+			gestionAdminService.saveAdmin(new Admin("default Admin", "admin@gmail.com", "admin"));
+			System.out.println("default admin created ");
+		}
+			
 	}
-	public void addWebSitesAndEmail(Clinique clinique) {
+	/*public void addWebSitesAndEmail(Clinique clinique) {
 		
 		String name = "";
 		String url = "http://";

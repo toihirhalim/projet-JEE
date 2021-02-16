@@ -62,20 +62,6 @@ POST http://localhost:8080/form/add
 content-type: application/json
 
 {
-    /*"name" : "Mustafa Amri",
-    "email" : "mustafa@gmail.com",
-    "speciality" : "Ophtalmologue",
-    "publicEmail" : "mustafaclinique@contact.com",
-    "ville" : "Tanger",
-    "cliniqueName" : "Clinique Mustafa",
-    "number": "0624859632",
-    "oppenAt" : "8h",
-    "closeAt" : "15h",
-    "adress" : "Route Marjane",
-    "webSiteName" : "cliniquemustafa.com",
-    "webSiteUrl" : "http://cliniquemustafa.com"*/
-
-    /*
     "name" : "Amar Filal",
     "email" : "amar@gmail.com",
     "speciality" : "Ophtalmologue",
@@ -87,5 +73,14 @@ content-type: application/json
     "closeAt" : "16h",
     "adress" : "Iberia",
     "webSiteName" : "cliniqueamar.com",
-    "webSiteUrl" : "http://cliniqueamar.com"*/
+    "webSiteUrl" : "http://cliniqueamar.com"
+}
+
+### liste demandes
+POST http://localhost:8080/demandes/form/all
+content-type: application/json
+
+{
+    "email" : "admin@gmail.com",
+    "password" : "admin"
 }

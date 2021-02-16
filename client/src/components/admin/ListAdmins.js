@@ -4,7 +4,7 @@ import AdminComponent from './AdminComponent'
 import AddAdmin from './AddAdmin'
 
 
-export default function ListeAdmins({ setError }) {
+export default function ListeAdmins({ setError, logout }) {
     const [adminList, setAdminList] = useState([])
     const [reload, setReload] = useState(true)
 
@@ -43,7 +43,14 @@ export default function ListeAdmins({ setError }) {
                 adminList.map(admin => {
                     return (
                         <div key={admin.id}>
-                            <AdminComponent admin={admin} reload={reload} setReload={setReload} token={token} setError={setError} />
+                            <AdminComponent
+                                admin={admin}
+                                reload={reload}
+                                setReload={setReload}
+                                token={token}
+                                setError={setError}
+                                logout={logout}
+                            />
                         </div>
                     )
                 })

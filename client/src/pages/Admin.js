@@ -10,6 +10,7 @@ export default function Admin() {
     const urlApi = 'http://localhost:8080/admin/login'
     const type = 'Admin'
 
+
     if (!token)
         return <Login
             setToken={setToken}
@@ -32,6 +33,7 @@ export default function Admin() {
                 <div className="container">
                     <Optionresults
                         option={option}
+                        logout={logout}
                     />
                 </div>
             </div>

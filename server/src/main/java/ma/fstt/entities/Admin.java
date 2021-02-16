@@ -17,9 +17,9 @@ public class Admin {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Admin(String id, String email, String password) {
+	public Admin(String name, String email, String password) {
 		super();
-		this.id = id;
+		this.name = name;
 		this.password = password;
 		this.email = email;
 	}

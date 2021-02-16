@@ -43,9 +43,13 @@ public class GestionAdminService {
 		return null;
 	}
 	
+	public List<Admin> getAllAdmin(){
+		return adminRepository.findAll();
+	}
+	
 	public List<Admin> listAdmin(Admin admin){
 		if(login(admin) != null)
-			return adminRepository.findAll();
+			return getAllAdmin();
 		return null;
 	}
 

@@ -14,7 +14,6 @@ export default function Login({ setToken, urlApi, type }) {
     const handleSubmit = e => {
         e.preventDefault();
         setError("");
-        console.log("remebmer me : ", remeberMe)
         fetch(urlApi, {
             method: 'POST',
             headers: {
@@ -30,11 +29,8 @@ export default function Login({ setToken, urlApi, type }) {
                     if (remeberMe) {
                         setLocalToken(type, token)
 
-                        console.log("remebmer me : saved local ", remeberMe)
                     } else {
                         deleteLocalToken(type)
-
-                        console.log("remebmer me : delete local ", remeberMe)
                     }
                 }
             })
