@@ -5,7 +5,7 @@ import ListDemandes from './ListDemandes'
 import ModifyAdminProfil from './ModifyAdminProfil'
 
 
-export default function OptionResults({ option, logout }) {
+export default function OptionResults({ option, logout, setToken, token }) {
     const [error, setError] = useState('')
 
     return (
@@ -19,22 +19,34 @@ export default function OptionResults({ option, logout }) {
                 <div>
                     {option === 'listAdmins' &&
                         <div>
-                            <ListAdmins setError={setError} logout={logout} />
+                            <ListAdmins
+                                setError={setError}
+                                logout={logout}
+                            />
                         </div>
                     }
                     {option === 'listMedcins' &&
                         <div>
-                            <ListMedcins setError={setError} />
+                            <ListMedcins
+                                setError={setError}
+                            />
                         </div>
                     }
                     {option === 'listDemandes' &&
                         <div>
-                            <ListDemandes setError={setError} />
+                            <ListDemandes
+                                setError={setError}
+                            />
                         </div>
                     }
                     {option === 'ModiyProfile' &&
                         <div>
-                            <ModifyAdminProfil setError={setError} />
+                            <ModifyAdminProfil
+                                logout={logout}
+                                setError={setError}
+                                setToken={setToken}
+                                token={token}
+                            />
                         </div>
                     }
                 </div>

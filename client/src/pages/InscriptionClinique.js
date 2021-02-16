@@ -62,21 +62,23 @@ export default function InscriptionClinique() {
             <div className="container">
                 <form onSubmit={handleSubmit}>
                     <div className="form-elm-dmd">
-                        <h3>Enter your ful Name : </h3>
+                        <h3>Enter your ful Name : *</h3>
                         <input
                             type="texte"
                             className="form-input-dmd"
                             value={name}
                             onChange={e => { setName(e.target.value) }}
+                            required
                         />
                     </div>
                     <div className="form-elm-dmd">
-                        <h3>Enter your private Email : </h3>
+                        <h3>Enter your private Email : *</h3>
                         <input
                             type="texte"
                             className="form-input-dmd"
                             value={email}
                             onChange={e => { setEmail(e.target.value) }}
+                            required
                         />
                     </div>
                     <div className="form-elm-dmd">
@@ -89,21 +91,23 @@ export default function InscriptionClinique() {
                         />
                     </div>
                     <div className="form-elm-dmd">
-                        <h3>Enter your Speciality: </h3>
+                        <h3>Enter your Speciality: *</h3>
                         <input
                             type="texte"
                             className="form-input-dmd"
                             value={speciality}
                             onChange={e => { setSpeciality(e.target.value) }}
+                            required
                         />
                     </div>
                     <div className="form-elm-dmd">
-                        <h3>Enter your City : </h3>
+                        <h3>Enter your City : *</h3>
                         <input
                             type="texte"
                             className="form-input-dmd"
                             value={ville}
                             onChange={e => { setVille(e.target.value) }}
+                            required
                         />
                     </div>
                     <div className="form-elm-dmd">

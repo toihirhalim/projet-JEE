@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './auth.css';
-import { getLocalToken, setLocalToken, deleteLocalToken } from './RemeberMe'
+import { getLocalToken, setLocalToken, deleteLocalToken } from './RememberMe'
 import PropTypes from 'prop-types';
 
 export default function Login({ setToken, urlApi, type }) {

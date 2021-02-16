@@ -86,4 +86,20 @@ public class GestionAdminService {
 		
 		return newAdmin;
 	}
+
+	public Admin updateAdmin(Admin admin, String name, String email, String password) {
+		// TODO Auto-generated method stub
+		admin = login(admin);
+		System.out.println(admin + "tryng to update \'" + name + "\' email " + email + " password " + password);
+		
+		if(admin == null || email == null || password == null 
+				|| email.equals("") || password.equals(""))
+			return null;
+		
+		admin.setName(name);
+		admin.setEmail(email);
+		admin.setPassword(password);
+		
+		return saveAdmin(admin);
+	}
 }

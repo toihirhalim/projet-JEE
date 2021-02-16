@@ -17,7 +17,9 @@ content-type: application/json
 
 
 
-### admin
+/update/name={name}/email={email}/password={password}
+
+### delete admin
 POST http://localhost:8080/admin/login
 content-type: application/json
 
@@ -25,9 +27,6 @@ content-type: application/json
     "email" : "admin@gmail.com",
     "password" : "admin"
 }
-
-
-
 ### admin
 POST http://localhost:8080/admin/all
 content-type: application/json

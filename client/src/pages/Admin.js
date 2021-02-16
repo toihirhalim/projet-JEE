@@ -34,6 +34,8 @@ export default function Admin() {
                     <Optionresults
                         option={option}
                         logout={logout}
+                        setToken={setToken}
+                        token={token}
                     />
                 </div>
             </div>

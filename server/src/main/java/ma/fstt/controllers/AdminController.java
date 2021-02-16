@@ -27,7 +27,7 @@ public class AdminController {
 	GestionMedcinService gestionMedcinService;
 
 	@PostMapping("/login")
-	public Admin getAllByDouleurs(@RequestBody Admin admin){
+	public Admin login(@RequestBody Admin admin){
 		
 		return gestionAdminService.login(admin);
 	}
@@ -52,6 +52,12 @@ public class AdminController {
 	public Admin ajouterAdmin(@RequestBody Admin admin, @PathVariable("name") String name,
 			@PathVariable("email") String email){
 			return gestionAdminService.addAdmin(admin, name, email);
+	}
+	
+	@PostMapping("/update/name={name}/email={email}/password={password}")
+	public Admin updateAdmin(@RequestBody Admin admin, @PathVariable("name") String name,
+			@PathVariable("email") String email, @PathVariable("password") String password){
+		return gestionAdminService.updateAdmin(admin, name, email, password);
 	}
 	
 	
