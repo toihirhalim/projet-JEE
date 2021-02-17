@@ -1,11 +1,9 @@
 import React from 'react'
 import './searchForm.css'
 
-export default function MedcinComponent({ medcin }) {
+export default function MedcinComponent({ medcin, adminMode, deleteMedcin }) {
 
-    const reserver = () => {
-        console.log('reservation ...');
-    }
+
     return (
         <div className="medcin">
             <div className="medcin-header">
@@ -14,8 +12,8 @@ export default function MedcinComponent({ medcin }) {
             </div>
             <div className="medcin-center">
                 <h3>{medcin.speciality}</h3>
-                <button className="reserver-btn" onClick={reserver}>reserver</button>
-                <p>Oppen at : {medcin.clinique.oppenAt} CloseAt : {medcin.clinique.closeAt}</p>
+                <p>Oppen at : {medcin.clinique.oppenAt} </p>
+                <p>CloseAt : {medcin.clinique.closeAt}</p>
             </div>
             <div className="medcin-footer">
                 <div className="medcin-footer-elm">
@@ -37,6 +35,12 @@ export default function MedcinComponent({ medcin }) {
                     </p>
                 </div>
             </div>
+            {
+                adminMode &&
+                <div className="medcin-dlt-btn-container">
+                    <button className="medcin-dlt-btn" onClick={deleteMedcin}>delete</button>
+                </div>
+            }
         </div>
     )
 }

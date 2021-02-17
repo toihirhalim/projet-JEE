@@ -5,6 +5,7 @@ export default function InscriptionClinique() {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [publicEmail, setPublicEmail] = useState('')
+    const [password, setPassword] = useState('')
     const [speciality, setSpeciality] = useState('')
     const [ville, setVille] = useState('')
     const [cliniqueName, setCliniqueName] = useState('')
@@ -14,7 +15,6 @@ export default function InscriptionClinique() {
     const [adress, setAdress] = useState('')
     const [webSiteName, setWebSiteName] = useState('')
     const [webSiteUrl, setWebSiteUrl] = useState('')
-
 
     let history = useHistory();
 
@@ -32,6 +32,7 @@ export default function InscriptionClinique() {
                 name,
                 email,
                 publicEmail,
+                password,
                 speciality,
                 ville,
                 cliniqueName,
@@ -82,6 +83,16 @@ export default function InscriptionClinique() {
                         />
                     </div>
                     <div className="form-elm-dmd">
+                        <h3>Enter a password: * </h3>
+                        <input
+                            type="texte"
+                            className="form-input-dmd"
+                            value={password}
+                            onChange={e => { setPassword(e.target.value) }}
+                            required
+                        />
+                    </div>
+                    <div className="form-elm-dmd">
                         <h3>Enter your public Email: </h3>
                         <input
                             type="texte"
@@ -111,12 +122,13 @@ export default function InscriptionClinique() {
                         />
                     </div>
                     <div className="form-elm-dmd">
-                        <h3>Enter your clinique Name : </h3>
+                        <h3>Enter your clinique Name : *</h3>
                         <input
                             type="texte"
                             className="form-input-dmd"
                             value={cliniqueName}
                             onChange={e => { setCliniqueName(e.target.value) }}
+                            required
                         />
                     </div>
                     <div className="form-elm-dmd">

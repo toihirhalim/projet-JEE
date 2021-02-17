@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ma.fstt.entities.Admin;
-import ma.fstt.entities.Medcin;
 import ma.fstt.services.GestionAdminService;
-import ma.fstt.services.GestionMedcinService;
 
 @RestController
 @RequestMapping("admin")
@@ -22,9 +20,6 @@ public class AdminController {
 	
 	@Autowired
 	GestionAdminService gestionAdminService;
-	
-	@Autowired
-	GestionMedcinService gestionMedcinService;
 
 	@PostMapping("/login")
 	public Admin login(@RequestBody Admin admin){
@@ -35,11 +30,6 @@ public class AdminController {
 	@PostMapping("/all")
 	public List<Admin> listAdmin(@RequestBody Admin admin){
 		return gestionAdminService.listAdmin(admin);
-	}
-	
-	@PostMapping("/medcin/all")
-	public List<Medcin> listAllMedcin(@RequestBody Admin admin){
-		return gestionMedcinService.getAll();
 	}
 	
 	@PostMapping("/delete/{id}")

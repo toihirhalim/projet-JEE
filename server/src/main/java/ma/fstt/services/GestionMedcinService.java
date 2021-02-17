@@ -9,6 +9,7 @@ import ma.fstt.dao.MedcinRepository;
 import ma.fstt.entities.Adress;
 import ma.fstt.entities.Clinique;
 import ma.fstt.entities.Medcin;
+import ma.fstt.entities.Profile;
 import ma.fstt.entities.WebSite;
 import ma.fstt.sequences.SequenceGenerator;
 
@@ -37,6 +38,9 @@ public class GestionMedcinService {
 				medcin.getClinique().getWebSite().setId("" + sequenceGenerator.generateSequence(WebSite.SEQUENCE_NAME));
 		}
 		
+		if(medcin.getProfile() != null && medcin.getProfile().getId() == null)
+			medcin.getProfile().setId("" + sequenceGenerator.generateSequence(Profile.SEQUENCE_NAME));
+		
 		return medcinRepository.save(medcin);
 	}
 	
@@ -54,5 +58,10 @@ public class GestionMedcinService {
 	public Medcin addMedcin(Medcin medcin) {
 		
 		return saveMedcin(medcin);
+	}
+	
+	public void deleteMedcin(String id) {
+		
+		medcinRepository.deleteById(id);
 	}
 }

@@ -1,6 +1,8 @@
 package ma.fstt.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import ma.fstt.dao.DemandeFormRepository;
@@ -15,6 +17,9 @@ public class DemandeformService {
 	@Autowired
 	SequenceGenerator Sequencesenerator;
 	
+	/*@Autowired
+    private JavaMailSender javaMailSender;*/
+	
 	public DemandeForm saveDemandeForm(DemandeForm form) {
 		if(form == null) return null;
 				
@@ -26,6 +31,25 @@ public class DemandeformService {
 	}
 	
 	public DemandeForm addForm(DemandeForm form) {
-		return saveDemandeForm(form);
+		if(form != null && form.getEmail() != null){
+			if(demandeFormRepository.findByEmail(form.getEmail()) == null)
+				return saveDemandeForm(form);
+			//sendMail(form);
+		}
+		return null;
 	}
+	
+	/*public void sendMail(DemandeForm form) {
+		try {
+			SimpleMailMessage msg = new SimpleMailMessage();
+	        msg.setTo(form.getEmail());
+	        msg.setSubject("Affirmation de demande");
+	        msg.setText("Bonjour Mr " + form.getName() + "\n votre demande d'insciption de votre clinique : "+ form.getCliniqueName() +
+	        		" a eté bien recu !\n apres un traitement, vous recevrez prochainement recevrez un email"+
+	        		" pour affirmer la validité \n on vous remercie !");
+
+	        javaMailSender.send(msg);
+		}catch(Exception e) {}
+		
+	}*/
 }

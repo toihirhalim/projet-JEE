@@ -33,7 +33,7 @@ export default function SentenceForm({ setMedcins, setError, setLoading }) {
     }
     return (
         <div id="sentecnce-form">
-            <label>symptomes : </label>
+            <label>Douleurs : </label>
             <input type="text" value={douleurs} onChange={e => setDouleurs(e.target.value)} maxLength="55" />
             <button onClick={search}>search</button>
         </div>

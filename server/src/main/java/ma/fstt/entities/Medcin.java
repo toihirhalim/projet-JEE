@@ -14,11 +14,11 @@ public class Medcin {
 	private String name;
 	private String ville;
 	private String speciality;
-	@JsonIgnore
-	private String idTags;
-	private double rating;
 	
 	private Clinique clinique;
+	
+	@JsonIgnore
+	private Profile profile;
 	
 	public Medcin() {
 		super();
@@ -72,28 +72,20 @@ public class Medcin {
 		this.speciality = speciality;
 	}
 	
-	public String getIdTags() {
-		return idTags;
-	}
-
-	public void setIdTags(String tagId) {
-		this.idTags = tagId;
-	}
-
-	public double getRating() {
-		return rating;
-	}
-
-	public void setRating(double rating) {
-		this.rating = rating;
-	}
-
 	public Clinique getClinique() {
 		return clinique;
 	}
 
 	public void setClinique(Clinique clinique) {
 		this.clinique = clinique;
+	}
+	
+	public Profile getProfile() {
+		return profile;
+	}
+
+	public void setProfile(Profile profile) {
+		this.profile = profile;
 	}
 
 	@Override

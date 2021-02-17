@@ -12,6 +12,7 @@ import ma.fstt.entities.Adress;
 import ma.fstt.entities.Clinique;
 import ma.fstt.entities.DemandeForm;
 import ma.fstt.entities.Medcin;
+import ma.fstt.entities.Profile;
 import ma.fstt.entities.WebSite;
 
 @Service
@@ -25,7 +26,11 @@ public class GestionDemandeFormService {
 	
 	@Autowired
 	GestionMedcinService gestionMedcinService;
+
+	/*@Autowired
+    private JavaMailSender javaMailSender;*/
 	
+
 	public Admin loginAdmin(Admin admin) {
 		return adminRepository.findByEmailAndPassword(admin.getEmail(), admin.getPassword());
 	}
@@ -39,8 +44,9 @@ public class GestionDemandeFormService {
 	
 	
 	public void deleteForm(Admin admin, String idForm) {
+		DemandeForm form = demandeFormRepository.findById(idForm).orElse(null);
 		demandeFormRepository.deleteById(idForm);
-		//send email
+		//sendRejectionMail(form);
 	}
 
 	public Medcin acceptForm(Admin admin, String idForm) {
@@ -51,7 +57,8 @@ public class GestionDemandeFormService {
 		if(form != null) {
 			//create medcin profile && send email
 			Medcin medcin = formToMedcin(form);
-			//medcin = gestionMedcinService.saveMedcin(medcin);
+			medcin = gestionMedcinService.saveMedcin(medcin);
+			demandeFormRepository.deleteById(form.getId());
 			return medcin;
 		}
 		return null;
@@ -80,14 +87,27 @@ public class GestionDemandeFormService {
 		clinique.setAdress(adress);
 		clinique.setWebSite(webSite);
 		
+		Profile profile = new Profile();
+		profile.setEmail(form.getEmail());
+		profile.setPassword(form.getPassword());
+		
+		medcin.setProfile(profile);
+		
 		medcin.setClinique(clinique);
 		
 		return medcin;
 	}
 	
-	
-	
-	
-	
-	
+	/*public void sendRejectionMail(DemandeForm form) {
+		SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setTo(form.getEmail());
+        msg.setSubject("Demande d'inscription Rejeté");
+        msg.setText("Bonjour Mr " + form.getName() + "\nNous sommes desolé de vous annoncer que votre demande d'insciption de votre clinique : "+ form.getCliniqueName() +
+        		" a été rejeté.\nNous vous demandons d'entrer des vraie informations pour la prochaine demande\n On vous remercie");
+
+        javaMailSender.send(msg);
+	}catch(Exception e) {}
+	}*/
+
 }
+
