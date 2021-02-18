@@ -35,8 +35,14 @@ export default function SentenceForm({ setMedcins, setError, setLoading, setSele
     }
     return (
         <div id="sentecnce-form">
-            <label>Douleurs : </label>
-            <input type="text" value={douleurs} onChange={e => setDouleurs(e.target.value)} maxLength="55" />
+            <p>Douleurs : </p>
+            <input
+                type="text"
+                value={douleurs}
+                onChange={e => setDouleurs(e.target.value)}
+                maxLength="55"
+                id="sentence-srch-input"
+            />
             <button onClick={search}>search</button>
         </div>
     )

@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 
 export default function SelectForm({ setMedcins, setError, setLoading, setSelectedMedcin }) {
-    const villes = ["Tanger", "Rabat"]
-    const specialites = ["Ophtalmologue", "Dermatologue", "Cardiologue", "Chirurgien"]
+    const villes = ["Casablanca", "El Jadida", "El mohammadia", "Tanger", "Rabat"]
+    const specialites = ["Neurologue", "Endocrinologue", "Dermatologue", "Cardiologue",
+        "Chirurgien", "Gynecologue", "Urologue", "Hepatologue", "Pediatre", "Anesthesiologue",
+        "Ophtalmologue", "Gastro-enterologue", "Rhumatologue"]
     const [selectedVille, setSelectedVille] = useState('0')
     const [selectedSpeciality, setselectedSpeciality] = useState('0')
 
