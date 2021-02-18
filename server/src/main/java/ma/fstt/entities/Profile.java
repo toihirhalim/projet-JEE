@@ -45,6 +45,10 @@ public class Profile {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Profile [id=" + id + ", email=" + email + ", password=" + password + "]";
+	}
 	
 }

@@ -12,7 +12,6 @@ public class Medcin {
 	@Id
 	private String id;
 	private String name;
-	private String ville;
 	private String speciality;
 	
 	private Clinique clinique;
@@ -29,14 +28,12 @@ public class Medcin {
 		super();
 		this.id = id;
 		this.name = name;
-		this.ville = ville;
 		this.speciality = speciality;
 	}
 	
 	public Medcin(String name, String ville, String speciality) {
 		super();
 		this.name = name;
-		this.ville = ville;
 		this.speciality = speciality;
 	}
 
@@ -54,14 +51,6 @@ public class Medcin {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getVille() {
-		return ville;
-	}
-
-	public void setVille(String ville) {
-		this.ville = ville;
 	}
 
 	public String getSpeciality() {
@@ -90,7 +79,7 @@ public class Medcin {
 
 	@Override
 	public String toString() {
-		return "Medcin [id=" + id + ", name=" + name + ", ville=" + ville + ", speciality=" + speciality + "]";
+		return "Medcin [id=" + id + ", name=" + name + ", speciality=" + speciality + "]";
 	}
 
 }

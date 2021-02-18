@@ -38,7 +38,7 @@ content-type: application/json
 
 
 ### admin
-POST http://localhost:8080/admin/medcin/all
+POST http://localhost:8080/listmedcins/all
 content-type: application/json
 
 {
@@ -82,4 +82,42 @@ content-type: application/json
 {
     "email" : "admin@gmail.com",
     "password" : "admin"
+}
+
+
+### profile medcin
+POST http://localhost:8080/profile/login
+content-type: application/json
+
+{
+    "email" : "toihir@gmail.com",
+    "password" : "toihir"
+}
+
+### update profile medcin
+POST http://localhost:8080/profile/update/profile/email=toihir@gmail.com/password=toihir
+content-type: application/json
+
+{
+    "email" : "toihir@gmail.com",
+    "password" : "toihir"
+}
+
+
+### update profile medcin
+POST http://localhost:8080/profile/update/name=toihirhalim/speciality=Cardiologue
+content-type: application/json
+
+{
+    "email" : "toihir@gmail.com",
+    "password" : "toihir"
+}
+
+### profile medcin
+POST http://localhost:8080/profile/medcin
+content-type: application/json
+
+{
+    "email" : "toihir@gmail.com",
+    "password" : "toihir"
 }

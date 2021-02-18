@@ -44,9 +44,9 @@ public class GestionDemandeFormService {
 	
 	
 	public void deleteForm(Admin admin, String idForm) {
-		DemandeForm form = demandeFormRepository.findById(idForm).orElse(null);
-		demandeFormRepository.deleteById(idForm);
+		//DemandeForm form = demandeFormRepository.findById(idForm).orElse(null);
 		//sendRejectionMail(form);
+		demandeFormRepository.deleteById(idForm);
 	}
 
 	public Medcin acceptForm(Admin admin, String idForm) {
@@ -67,7 +67,6 @@ public class GestionDemandeFormService {
 	public Medcin formToMedcin(DemandeForm form) {
 		Medcin medcin = new Medcin();
 		medcin.setName(form.getName());
-		medcin.setVille(form.getVille());
 		medcin.setSpeciality(form.getSpeciality());
 		
 		Clinique clinique = new Clinique();	
@@ -78,6 +77,7 @@ public class GestionDemandeFormService {
 		clinique.setEmail(form.getPublicEmail());
 		
 		Adress adress = new Adress();
+		adress.setVille(form.getVille());
 		adress.setLocation(form.getAdress());
 		
 		WebSite webSite = new WebSite();

@@ -32,7 +32,7 @@ public class AdminListeMedcinController {
 		if(gestionAdminService.login(admin) != null)
 		return gestionMedcinService.getAll();
 		
-		return new ArrayList();
+		return new ArrayList<Medcin>();
 	}
 	
 	@PostMapping("/delete/{id}")

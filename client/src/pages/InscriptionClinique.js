@@ -122,13 +122,12 @@ export default function InscriptionClinique() {
                         />
                     </div>
                     <div className="form-elm-dmd">
-                        <h3>Enter your clinique Name : *</h3>
+                        <h3>Enter your clinique Name : </h3>
                         <input
                             type="texte"
                             className="form-input-dmd"
                             value={cliniqueName}
                             onChange={e => { setCliniqueName(e.target.value) }}
-                            required
                         />
                     </div>
                     <div className="form-elm-dmd">
@@ -177,7 +176,7 @@ export default function InscriptionClinique() {
                         />
                     </div>
                     <div className="form-elm-dmd">
-                        <h3>Enter your web site Url : </h3>
+                        <h3>Enter your web site Url : ( sans http:// ou https:// )</h3>
                         <input
                             type="texte"
                             className="form-input-dmd"

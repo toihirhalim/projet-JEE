@@ -7,6 +7,7 @@ export default function Acceuil() {
     const [medcins, setMedcins] = useState([])
     const [error, setError] = useState()
     let [isLoading, setLoading] = useState(false)
+    const [selectedMedcin, setSelectedMedcin] = useState()
 
     return (
         <div>
@@ -16,6 +17,7 @@ export default function Acceuil() {
                         setMedcins={setMedcins}
                         setError={setError}
                         setLoading={setLoading}
+                        setSelectedMedcin={setSelectedMedcin}
                     />
                 </div>
 
@@ -26,6 +28,8 @@ export default function Acceuil() {
                         medcins={medcins}
                         error={error}
                         isLoading={isLoading}
+                        selectedMedcin={selectedMedcin}
+                        setSelectedMedcin={setSelectedMedcin}
                     />
                 </div>
             </div>

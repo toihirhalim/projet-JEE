@@ -5,11 +5,13 @@ export default function ModifyAdminProfil({ logout, setToken, setError, token })
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    const [btnBackground, setBtnBackground] = useState({ 'backgroundColor': 'rgb(27, 50, 73)' })
+
     const handleSubit = e => {
         e.preventDefault()
         setError('')
         let url = `http://localhost:8080/admin/update/name=${name}/email=${email}/password=${password}`
-        setError('Error : something went wrong please verrify the connexion')
+
         fetch(url, {
             method: 'POST',
             headers: {
@@ -21,6 +23,7 @@ export default function ModifyAdminProfil({ logout, setToken, setError, token })
             .then(data => {
                 if (data && data.email && data.password) {
                     setToken({ email: data.email, password: data.password })
+                    setBtnBackground({ 'backgroundColor': 'rgb(27, 50, 73)' })
                 }
             })
             .catch(e => setError('Error : something went wrong please verrify the connexion'))
@@ -70,7 +73,10 @@ export default function ModifyAdminProfil({ logout, setToken, setError, token })
                             type="email"
                             value={email}
                             className="modify-admin-input"
-                            onChange={e => { setEmail(e.target.value) }}
+                            onChange={e => {
+                                setEmail(e.target.value)
+                                setBtnBackground({ 'backgroundColor': 'rgb(117, 54, 54)' })
+                            }}
                             required
                         />
                     </div>
@@ -80,13 +86,16 @@ export default function ModifyAdminProfil({ logout, setToken, setError, token })
                             type="texte"
                             value={password}
                             className="modify-admin-input"
-                            onChange={e => { setPassword(e.target.value) }}
+                            onChange={e => {
+                                setPassword(e.target.value)
+                                setBtnBackground({ 'backgroundColor': 'rgb(117, 54, 54)' })
+                            }}
                             required
                         />
                     </div>
 
                     <div>
-                        <button className="modify-admin-sbmt-btn" type="submit">Submit</button>
+                        <button className="modify-admin-sbmt-btn" type="submit" style={btnBackground}>Submit Changes</button>
                     </div>
                 </form>
             </div>

@@ -95,6 +95,10 @@
     height: 30px;
 }
 
+.clickable-medcin:hover{
+    cursor: pointer;
+}
+
 #search-error{
     display: flex;
     justify-content: center;

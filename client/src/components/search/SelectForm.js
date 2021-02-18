@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function SelectForm({ setMedcins, setError, setLoading }) {
+export default function SelectForm({ setMedcins, setError, setLoading, setSelectedMedcin }) {
     const villes = ["Tanger", "Rabat"]
     const specialites = ["Ophtalmologue", "Dermatologue", "Cardiologue", "Chirurgien"]
     const [selectedVille, setSelectedVille] = useState('0')
@@ -9,6 +9,7 @@ export default function SelectForm({ setMedcins, setError, setLoading }) {
     const search = e => {
         setError(null)
         setMedcins([])
+        setSelectedMedcin(null)
         let url = 'http://localhost:8080/search'
         if (selectedVille !== '0' && selectedSpeciality !== '0') {
             url += `/ville/${selectedVille}/speciality/${selectedSpeciality}`

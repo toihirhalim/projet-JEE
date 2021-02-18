@@ -110,6 +110,7 @@ public class Clinique {
 	@Override
 	public String toString() {
 		return "Clinique [id=" + id + ", name=" + name + ", oppenAt=" + oppenAt + ", closeAt=" + closeAt + ", number="
-				+ number + ", email=" + email + ", webSite=" + webSite + "]";
+				+ number + ", email=" + email + "]";
 	}
+
 }

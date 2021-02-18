@@ -24,8 +24,9 @@
     width: 96%;
 }
 
-.login-button {
+.btn {
     transform: scale(1.2);
+    margin : 0px 15px;
 }
 
 .login-button-container {
@@ -35,6 +36,11 @@
 
 .login-check-boxes-container{
     margin: 10px 0px;
+}
+
+.cancel-btn{
+    background-color: rgb(194, 15, 15);
+    color: rgb(253, 249, 249);
 }
 
 .login-error {

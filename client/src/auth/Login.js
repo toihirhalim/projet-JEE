@@ -3,7 +3,7 @@ import './auth.css';
 import { getLocalToken, setLocalToken, deleteLocalToken } from './RememberMe'
 import PropTypes from 'prop-types';
 
-export default function Login({ setToken, urlApi, type }) {
+export default function Login({ setToken, urlApi, type, setModifyProfile }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -55,7 +55,7 @@ export default function Login({ setToken, urlApi, type }) {
                 <h1 className="login-title">Log In {type}</h1>
                 <form onSubmit={handleSubmit}>
                     <label>
-                        <p>Username :</p>
+                        <p>Email :</p>
                         <input type="email" className="login-inputs" value={email} onChange={e => setEmail(e.target.value)} required />
                     </label>
                     <label>
@@ -75,7 +75,11 @@ export default function Login({ setToken, urlApi, type }) {
                         </label>
                     </div>
                     <div className="login-button-container">
-                        <button className="login-button" type="submit">Login</button>
+                        {
+                            type === 'Medcin' &&
+                            <button className="cancel-btn btn" onClick={e => { setModifyProfile(false) }}>Cancel</button>
+                        }
+                        <button className="login-button btn" type="submit">Login</button>
                     </div>
                 </form>
 

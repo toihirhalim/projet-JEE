@@ -31,7 +31,7 @@ public class SearchMedcinService {
 	}
 	
 	public List<String> tokenize(String texte){
-		List<String> tokens = new ArrayList();
+		List<String> tokens = new ArrayList<String>();
 		String token  = "";
 		for(int i = 0; i < texte.length(); i++) {
 			char pos = texte.charAt(i);
@@ -48,10 +48,10 @@ public class SearchMedcinService {
 	}
 	
 	public List<Medcin> findByDouleurs(String douleurs){
-		List<Medcin> medcins = new ArrayList();
+		List<Medcin> medcins = new ArrayList<Medcin>();
 		List<String> tokens = tokenize(douleurs);
 		List<Tags> tags = tagsServices.findAll();
-		List<Tags> trueTags = new ArrayList();
+		List<Tags> trueTags = new ArrayList<Tags>();
 		
 		for(String token : tokens) {
 			for(Tags tag: tags) {

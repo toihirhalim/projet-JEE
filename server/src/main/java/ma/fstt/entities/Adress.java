@@ -9,32 +9,35 @@ public class Adress {
 	
 	@Id
 	private String id;
+	private String ville;
 	private String location;
-	private float longitude;
-	private float latitude;
+	private double longitude = -5.8085;
+	private double latitude = 35.7795;
 	
 	public Adress() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Adress(String location, float longitude, float latitude) {
+	
+	
+	public Adress(String ville, String location) {
 		super();
+		this.ville = ville;
 		this.location = location;
-		this.longitude = longitude;
-		this.latitude = latitude;
 	}
-	public Adress(String id, String location, float longitude, float latitude) {
-		super();
-		this.id = id;
-		this.location = location;
-		this.longitude = longitude;
-		this.latitude = latitude;
-	}
+
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	
+	public String getVille() {
+		return ville;
+	}
+	public void setVille(String ville) {
+		this.ville = ville;
 	}
 	public String getLocation() {
 		return location;
@@ -42,18 +45,26 @@ public class Adress {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	public float getLongitude() {
+	
+	public double getLongitude() {
 		return longitude;
 	}
-	public void setLongitude(float longitude) {
+
+	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
-	public float getLatitude() {
+
+
+	public double getLatitude() {
 		return latitude;
 	}
-	public void setLatitude(float latitude) {
+
+
+	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
+
+
 	@Override
 	public String toString() {
 		return "Adress [id=" + id + ", location=" + location + ", longitude=" + longitude + ", latitude=" + latitude

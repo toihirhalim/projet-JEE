@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 
-export default function SentenceForm({ setMedcins, setError, setLoading }) {
+export default function SentenceForm({ setMedcins, setError, setLoading, setSelectedMedcin }) {
     const [douleurs, setDouleurs] = useState('')
 
     const search = () => {
 
         setError(null)
         setMedcins([])
+        setSelectedMedcin(null)
+        setSelectedMedcin(null)
         if (douleurs.length <= 0) {
             setError('Error : Pleaase enter douleurs')
             return;

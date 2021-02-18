@@ -3,7 +3,7 @@ import './searchForm.css'
 import SelectForm from './SelectForm'
 import SentenceForm from './SentenceForm'
 
-export default function SearchForm({ setMedcins, setError, setLoading }) {
+export default function SearchForm({ setMedcins, setError, setLoading, setSelectedMedcin }) {
     return (
         <div id="search-form">
             <div className="search-part">
@@ -11,6 +11,7 @@ export default function SearchForm({ setMedcins, setError, setLoading }) {
                     setMedcins={setMedcins}
                     setError={setError}
                     setLoading={setLoading}
+                    setSelectedMedcin={setSelectedMedcin}
                 />
             </div>
             <div className="search-part">
@@ -18,6 +19,7 @@ export default function SearchForm({ setMedcins, setError, setLoading }) {
                     setMedcins={setMedcins}
                     setError={setError}
                     setLoading={setLoading}
+                    setSelectedMedcin={setSelectedMedcin}
                 />
             </div>
         </div>
