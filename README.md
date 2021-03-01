@@ -28,56 +28,56 @@ un client peux rechercher un medcin par ville et ou pecialité ou par des douleu
   
 #### recherche par specialité  
   
-![recherche par ville](/Images/client/recherche%20par%20spécialité.bmp)   
+![recherche par specialite](/Images/client/recherche%20par%20spécialité.bmp)   
   
 ###" recherche par les douleurs  
   
-![recherche par ville](/Images/client/recherche%20par%20douleurs.bmp)  
+![recherche par douleurs](/Images/client/recherche%20par%20douleurs.bmp)  
   
 #### voir la localisation du clinique dans le profil d un pedcin  
   
-![recherche par ville](/Images/client/Profil%20medecin.bmp)  
+![profil medecin](/Images/client/Profil%20medecin.bmp)  
   
 ### cas d un medcin :  
 un medcin peu  inscrire son organisation (clinique), se connecter et modifier son profile  
   
 #### demande dinscription d un clinique  
   
-![recherche par ville](/Images/medecin/inscription%20clinique.bmp)  
+![inscription clinique](/Images/medecin/inscription%20clinique.bmp)  
   
 #### se connecter :  
   
-![recherche par ville](/Images/medecin/login%20medecin.bmp)  
+![login medecin](/Images/medecin/login%20medecin.bmp)  
   
 #### modifier son profile 
   
-![recherche par ville](/Images/medecin/modification%20profil%20medecin.bmp)  
+![update medecin](/Images/medecin/modification%20profil%20medecin.bmp)  
   
-![recherche par ville](/Images/medecin/modification%20Clinique.bmp)  
+![update clinique](/Images/medecin/modification%20Clinique.bmp)  
   
-![recherche par ville](/Images/medecin/modification%20Adress.bmp)  
+![update adress](/Images/medecin/modification%20Adress.bmp)  
   
-![recherche par ville](/Images/medecin/modification%20WebSite.bmp)  
+![update website](/Images/medecin/modification%20WebSite.bmp)  
   
 ### cas d un admin  
 un admin peu se connecter , ajouter supprimer des admins, supprimer un medcin, accepter ou refuser les demmandes dinscription, modifier son profil  
   
 #### se connecter :  
 
-![recherche par ville](/Images/admin/login%20admin.bmp)  
+![login admin](/Images/admin/login%20admin.bmp)  
   
 #### ajouter supprimer admin  
   
-![recherche par ville](/Images/admin/liste%20create%20admin.bmp)  
+![list admin](/Images/admin/liste%20create%20admin.bmp)  
   
 #### liste des medcin et suppression d un medcin 
   
-![recherche par ville](/Images/admin/Liste%20medecin%20suppression.bmp)   
+![list medecins](/Images/admin/Liste%20medecin%20suppression.bmp)   
   
 #### liste des demandes, accepter ou regeter   
   
-![recherche par ville](/Images/admin/iste%20demande%20accepter%20rejeter.bmp)  
+![liste demandes](/Images/admin/liste%20demande%20accepter%20rejeter.bmp)  
   
 #### modifier so profile
   
-![recherche par ville](/Images/admin/modification%20profil%20admin.bmp)  
+![modifier profil admin](/Images/admin/modification%20profil%20admin.bmp)  
